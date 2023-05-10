@@ -72,7 +72,7 @@ td {
 }
 
 body {
-  line-height: 1;
+  line-height: 1.3;
 }
 
 ol,
@@ -111,4 +111,8 @@ del {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
 }
