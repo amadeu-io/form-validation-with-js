@@ -39,7 +39,7 @@ form {
 
 .navbar {
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -54,12 +54,18 @@ form {
   font-weight: 600;
 }
 
+.navbar svg {
+  height: 20px;
+  width: auto;
+  transform: translateX(-7px) rotate(45deg);
+}
+
 .navbar-items a {
   color: black;
 }
 
 .navbar-items a:not(:first-child) {
-  margin-left: 40px;
+  margin-left: 30px;
 }
 
 /* underline on hover */
@@ -100,7 +106,7 @@ form {
 
 .form-container {
   width: 90%;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   display: flex;
   flex-direction: column;
 }
@@ -114,21 +120,31 @@ form {
   font-weight: 500;
   font-size: 0.85rem;
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
 }
 
 .error-message {
   color: red;
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   opacity: 0;
 }
 
 input[type="email"],
 input[type="text"],
 input[type="password"] {
-  padding: 11px;
-  margin-bottom: 4px;
+  height: 45px;
+  padding-left: 15px;
+  margin-bottom: 7px;
   background-color: rgba(0, 0, 0, 0.025);
+}
+
+input {
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+input:focus {
+  border: 1px solid rgb(209, 209, 209);
 }
 
 input[type="submit"] {
@@ -152,6 +168,3 @@ input::placeholder {
   font-weight: 500;
   font-size: 0.85rem;
 }
-
-
-
