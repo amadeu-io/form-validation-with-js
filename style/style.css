@@ -6,10 +6,10 @@ body {
 }
 
 html {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
-  letter-spacing: -1px;
-  color: black;
+  letter-spacing: -0.5px;
+  color: rgb(16, 16, 16);
 }
 
 body {
@@ -38,13 +38,20 @@ form {
 /* navbar */
 
 .navbar {
+  font-size: 0.8rem;
+  font-weight: 500;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
-  border-bottom: 1px solid rgb(165, 165, 165);
+  border-bottom: 1px solid rgb(226, 226, 226);
   margin-top: 20px;
+}
+
+.navbar .logo {
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .navbar-items a {
@@ -82,23 +89,24 @@ form {
 }
 
 .form-label {
+  font-weight: 500;
+  font-size: 0.8rem;
   display: block;
-  font-weight: bold;
   margin-bottom: 5px;
 }
 
 .error-message {
   color: red;
   font-size: 0.8rem;
+  opacity: 0;
 }
 
 input[type="email"],
 input[type="text"],
 input[type="password"] {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 11px;
   margin-bottom: 4px;
+  background-color: rgba(0, 0, 0, 0.025);
 }
 
 input[type="submit"] {
@@ -111,4 +119,10 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   background-color: #353535;
+}
+
+input::placeholder {
+  color: rgba(0, 0, 0, 0.25);
+  font-weight: 500;
+  font-size: 0.8rem;
 }
