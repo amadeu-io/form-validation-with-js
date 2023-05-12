@@ -148,7 +148,7 @@ input:focus {
 }
 
 input[type="submit"] {
-  background-color: #111111;
+  background-color: rgb(21, 21, 21);
   color: white;
   padding: 10px 20px;
   border: none;
@@ -156,6 +156,13 @@ input[type="submit"] {
   font-family: "Outfit", sans-serif;
   font-weight: 500;
   font-size: 0.85rem;
+}
+
+svg.submit-icon {
+  fill: white;
+  height: 16px;
+  width: auto;
+  transform: translate(43px, -27px);
 }
 
 input[type="submit"]:hover {
