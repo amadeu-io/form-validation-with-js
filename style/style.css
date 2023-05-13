@@ -122,7 +122,8 @@ form {
 
 .error-message,
 .email-error,
-.country-error {
+.country-error,
+.password-error {
   color: red;
   font-size: 0.7rem;
   opacity: 0;
@@ -195,6 +196,10 @@ select {
 
 option {
   font-size: 1rem;
+}
+
+select:focus {
+  border: 1px solid rgb(209, 209, 209);
 }
 
 .gray-out {
