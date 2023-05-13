@@ -117,6 +117,7 @@ a {
   text-decoration: none;
 }
 
-input {
+input,
+select {
   border: none;
 }

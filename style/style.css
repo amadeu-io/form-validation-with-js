@@ -120,7 +120,9 @@ form {
   margin-bottom: 7px;
 }
 
-.error-message {
+.error-message,
+.email-error,
+.country-error {
   color: red;
   font-size: 0.7rem;
   opacity: 0;
@@ -175,4 +177,27 @@ svg.submit-icon {
   height: 16px;
   width: auto;
   transform: translate(43px, -27px);
+}
+
+/* country dropdown */
+
+select {
+  /* same style as the inputs */
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: "Outfit", sans-serif;
+  font-weight: 500;
+  height: 45px;
+  padding-left: 15px;
+  margin-bottom: 7px;
+  background-color: rgba(0, 0, 0, 0.025);
+  color: rgba(0, 0, 0, 0.15);
+}
+
+select:focus {
+  color: black;
+}
+
+option {
+  font-size: 1rem;
 }
