@@ -1,6 +1,19 @@
 const form = document.querySelector("form");
 const email = document.getElementById("email");
+
+const emailInput = document.getElementById("email");
+const countryInput = document.getElementById("country");
+const zipCodeInput = document.getElementById("zip-code");
+const passwordInput = document.getElementById("password");
+const passwordValidationInput = document.getElementById("password-validation");
+
 const emailError = document.querySelector(".email-error");
+const countryError = document.querySelector(".country-error");
+const zipCodeError = document.querySelector(".zip-code-error");
+const passwordError = document.querySelector(".password-error");
+const passwordValidationError = document.querySelector(
+  ".password-validation-error"
+);
 
 function addEmailError() {
   if (email.validity.valueMissing) {
@@ -10,13 +23,20 @@ function addEmailError() {
   }
 }
 
+function addCountryError() {
+  countryError.textContent = "Please, enter a country";
+}
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  // add error text & toggle show class
+  // show email error
   if (!email.validity.valid) addEmailError();
   emailError.classList.toggle("show", !email.validity.valid);
 
-  
+  console.log(countryInput.value);
+
+  // show country error
+  if (countryInput.value === "") addCountryError();
+  countryError.classList.toggle("show", countryInput.value === "");
 });
