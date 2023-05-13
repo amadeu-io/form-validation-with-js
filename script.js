@@ -15,9 +15,11 @@ const passwordValidationError = document.querySelector(
   ".password-validation-error"
 );
 
+const countrySelect = document.querySelector("select");
+
 function addEmailError() {
   if (email.validity.valueMissing) {
-    emailError.textContent = "You need to enter an email address.";
+    emailError.textContent = "Please, enter an email adress.";
   } else if (email.validity.typeMismatch) {
     emailError.textContent = "Entered value needs to be an email address.";
   }
@@ -34,9 +36,13 @@ form.addEventListener("submit", (event) => {
   if (!email.validity.valid) addEmailError();
   emailError.classList.toggle("show", !email.validity.valid);
 
-  console.log(countryInput.value);
-
   // show country error
   if (countryInput.value === "") addCountryError();
   countryError.classList.toggle("show", countryInput.value === "");
+});
+
+// make country dropdown text black on focus
+
+countrySelect.addEventListener("focus", () => {
+  countrySelect.classList.remove("gray-out");
 });

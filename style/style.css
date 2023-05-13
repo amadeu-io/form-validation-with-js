@@ -191,13 +191,13 @@ select {
   padding-left: 15px;
   margin-bottom: 7px;
   background-color: rgba(0, 0, 0, 0.025);
-  color: rgba(0, 0, 0, 0.15);
-}
-
-select:focus {
-  color: black;
 }
 
 option {
   font-size: 1rem;
+}
+
+.gray-out {
+  /* will be removed once clicked */
+  color: rgba(0, 0, 0, 0.15);
 }
