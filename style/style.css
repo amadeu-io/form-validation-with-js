@@ -120,17 +120,18 @@ form {
   margin-bottom: 7px;
 }
 
-.error-message,
 .email-error,
 .country-error,
-.password-error {
+.password-error,
+.zipcode-error,
+.confirm-password-error {
   color: red;
   font-size: 0.7rem;
-  opacity: 0;
+  display: none;
 }
 
 .show {
-  opacity: 1;
+  display: block;
 }
 
 input {

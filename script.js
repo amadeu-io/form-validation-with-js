@@ -43,17 +43,15 @@ const email = document.getElementById("email");
 
 const emailInput = document.getElementById("email");
 const countryInput = document.getElementById("country");
-const zipCodeInput = document.getElementById("zip-code");
+const zipcodeInput = document.getElementById("zipcode");
 const passwordInput = document.getElementById("password");
-const passwordValidationInput = document.getElementById("password-validation");
+const confirmPasswordInput = document.getElementById("confirm-password");
 
 const emailError = document.querySelector(".email-error");
 const countryError = document.querySelector(".country-error");
-const zipCodeError = document.querySelector(".zip-code-error");
 const passwordError = document.querySelector(".password-error");
-const passwordValidationError = document.querySelector(
-  ".password-validation-error"
-);
+const zipcodeError = document.querySelector(".zipcode-error");
+const confirmPasswordError = document.querySelector(".confirm-password-error");
 
 const countrySelect = document.querySelector("select");
 
