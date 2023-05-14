@@ -1,5 +1,4 @@
-// add error message functions
-
+// remove all error messages
 function removeAllErrors() {
   const allErrors = document.querySelectorAll("span");
   allErrors.forEach((error) => {
@@ -7,6 +6,9 @@ function removeAllErrors() {
   });
 }
 
+// show error functions
+
+// show email error
 function showEmailError() {
   if (email.validity.valueMissing) {
     emailError.textContent = "Please, enter an email adress.";
@@ -17,14 +19,16 @@ function showEmailError() {
   emailError.classList.add("show-error");
 }
 
+// show country error
 function showCountryError() {
   countryError.textContent = "Please, select a country.";
   countryError.classList.add("show-error");
 }
 
+// show zipcode error
 function showZipcodeError() {
   if (zipcode.validity.valueMissing) {
-    zipcodeError.textContent = "Plase, enter a Zip code";
+    zipcodeError.textContent = "Plase, enter a zip code.";
   } else if (!validateZipcode(zipcode.value)) {
     zipcodeError.textContent = "Expected format: 90684 or 90684-4903";
   }
@@ -32,6 +36,7 @@ function showZipcodeError() {
   zipcodeError.classList.add("show-error");
 }
 
+// show password error
 function showPasswordError() {
   passwordError.textContent = `Password must be between 8 and 30 characters long 
   and contain one uppercase letter, one symbol, and a number.`;
@@ -39,37 +44,41 @@ function showPasswordError() {
   passwordError.classList.add("show-error");
 }
 
+// show confirm password error
 function showConfirmPasswordError() {
   confirmPasswordError.textContent = "Passwords do not match.";
   confirmPasswordError.classList.add("show-error");
 }
 
-// returns true or false if password is valid or not
+// validate input functions
 
+// returns true or false based on zipcode validity
+function validateZipcode(zipcode) {
+  const regex = /^\d{5}(-\d{4})?$/;
+  return regex.test(zipcode);
+}
+
+// returns true or false based on password validity
 function validatePassword(password) {
-  // Define regular expressions for each criteria
+  // define regular expressions for each criteria
   const lengthRegex = /^.{8,30}$/;
   const uppercaseRegex = /[A-Z]/;
   const symbolRegex = /[\W_]/;
   const numberRegex = /[0-9]/;
 
-  // Check each criteria using the regular expressions
+  // check each criteria using the regular expressions
   const isLengthValid = lengthRegex.test(password);
   const hasUppercase = uppercaseRegex.test(password);
   const hasSymbol = symbolRegex.test(password);
   const hasNumber = numberRegex.test(password);
 
-  // Return true if all criteria are met, otherwise false
+  // return true if all criteria are met, otherwise false
   return isLengthValid && hasUppercase && hasSymbol && hasNumber;
 }
 
+// returns true or false based on confirm password validity
 function validateConfirmPassword(password, confirmPassword) {
   return password === confirmPassword;
-}
-
-function validateZipcode(zipcode) {
-  const regex = /^\d{5}(-\d{4})?$/;
-  return regex.test(zipcode);
 }
 
 // program starts here
@@ -91,34 +100,30 @@ const confirmPasswordError = document.querySelector(".confirm-password-error");
 const countrySelect = document.querySelector("select");
 
 // make country dropdown text black on focus
-
 countrySelect.addEventListener("focus", () => {
   countrySelect.classList.remove("gray-out");
 });
 
-// show the adequate errors on submit
-
+// show errors on submit
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+
+  // remove all errors
   removeAllErrors();
 
-  // show email error
-  if (!email.validity.valid) showEmailError();
-
-  // show country error
-  if (country.value === "") showCountryError();
-
-  // show zipcode error
-  if (!validateZipcode(zipcode.value)) showZipcodeError();
-
-  // show password error
-  if (!validatePassword(password.value)) showPasswordError();
-
-  // show password confirmation error
-  if (
+  // find if inputs are valid or invalid
+  let emailValidity = email.validity.valid;
+  let countryValidity = !(country.value === "");
+  let zipcodeValidity = validateZipcode(zipcode.value);
+  let passwordValidity = validatePassword(password.value);
+  let confirmPasswordValidity =
     validatePassword(password.value) &&
-    !validateConfirmPassword(password.value, confirmPassword.value)
-  ) {
-    showConfirmPasswordError();
-  }
+    !validateConfirmPassword(password.value, confirmPassword.value);
+
+  // call adeqate error functions if invalid
+  if (!emailValidity) showEmailError();
+  if (!countryValidity) showCountryError();
+  if (!zipcodeValidity) showZipcodeError();
+  if (!passwordValidity) showPasswordError();
+  if (confirmPasswordValidity) showConfirmPasswordError();
 });
