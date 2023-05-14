@@ -22,12 +22,14 @@ function showCountryError() {
   countryError.classList.add("show-error");
 }
 
-function addZipcodeError() {
+function showZipcodeError() {
   if (zipcode.validity.valueMissing) {
     zipcodeError.textContent = "Plase, enter a Zip code";
   } else if (!validateZipcode(zipcode.value)) {
     zipcodeError.textContent = "Expected format: 90684 or 90684-4903";
   }
+
+  zipcodeError.classList.add("show-error");
 }
 
 function addPasswordError() {
@@ -104,8 +106,7 @@ form.addEventListener("submit", (event) => {
   if (country.value === "") showCountryError();
 
   // show zipcode error
-  if (!validateZipcode(zipcode.value)) addZipcodeError();
-  zipcodeError.classList.toggle("show-error", !validateZipcode(zipcode.value));
+  if (!validateZipcode(zipcode.value)) showZipcodeError();
 
   // show password error
   if (!validatePassword(password.value)) addPasswordError();
