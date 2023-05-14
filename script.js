@@ -1,15 +1,25 @@
 // add error message functions
 
-function addEmailError() {
+function removeAllErrors() {
+  const allErrors = document.querySelectorAll("span");
+  allErrors.forEach((error) => {
+    error.classList.remove("show-error");
+  });
+}
+
+function showEmailError() {
   if (email.validity.valueMissing) {
     emailError.textContent = "Please, enter an email adress.";
   } else if (email.validity.typeMismatch) {
     emailError.textContent = "Entered value needs to be an email address.";
   }
+
+  emailError.classList.add("show-error");
 }
 
-function addCountryError() {
-  countryError.textContent = "Please, enter a country.";
+function showCountryError() {
+  countryError.textContent = "Please, select a country.";
+  countryError.classList.add("show-error");
 }
 
 function addZipcodeError() {
@@ -85,22 +95,24 @@ countrySelect.addEventListener("focus", () => {
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+  removeAllErrors();
 
   // show email error
-  if (!email.validity.valid) addEmailError();
-  emailError.classList.toggle("show", !email.validity.valid);
+  if (!email.validity.valid) showEmailError();
 
   // show country error
-  if (country.value === "") addCountryError();
-  countryError.classList.toggle("show", country.value === "");
+  if (country.value === "") showCountryError();
 
   // show zipcode error
   if (!validateZipcode(zipcode.value)) addZipcodeError();
-  zipcodeError.classList.toggle("show", !validateZipcode(zipcode.value));
+  zipcodeError.classList.toggle("show-error", !validateZipcode(zipcode.value));
 
   // show password error
   if (!validatePassword(password.value)) addPasswordError();
-  passwordError.classList.toggle("show", !validatePassword(password.value));
+  passwordError.classList.toggle(
+    "show-error",
+    !validatePassword(password.value)
+  );
 
   // show password confirmation error
   if (
@@ -110,9 +122,7 @@ form.addEventListener("submit", (event) => {
     addConfirmPasswordError();
   }
   confirmPasswordError.classList.toggle(
-    "show",
+    "show-error",
     !validateConfirmPassword(password.value, confirmPassword.value)
   );
-
-  console.log(validateZipcode(zipcode.value));
 });
