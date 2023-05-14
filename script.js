@@ -16,7 +16,7 @@ function addZipcodeError() {
   if (zipcode.validity.valueMissing) {
     zipcodeError.textContent = "Plase, enter a Zip code";
   } else if (!validateZipcode(zipcode.value)) {
-    zipcodeError.textContent = "Expected format: ##### or #####-####";
+    zipcodeError.textContent = "Expected format: 90684 or 90684-4903";
   }
 }
 
