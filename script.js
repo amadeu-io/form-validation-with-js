@@ -39,8 +39,9 @@ function showPasswordError() {
   passwordError.classList.add("show-error");
 }
 
-function addConfirmPasswordError() {
+function showConfirmPasswordError() {
   confirmPasswordError.textContent = "Passwords do not match.";
+  confirmPasswordError.classList.add("show-error");
 }
 
 // returns true or false if password is valid or not
@@ -118,10 +119,6 @@ form.addEventListener("submit", (event) => {
     validatePassword(password.value) &&
     !validateConfirmPassword(password.value, confirmPassword.value)
   ) {
-    addConfirmPasswordError();
+    showConfirmPasswordError();
   }
-  confirmPasswordError.classList.toggle(
-    "show-error",
-    !validateConfirmPassword(password.value, confirmPassword.value)
-  );
 });
