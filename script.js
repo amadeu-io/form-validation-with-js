@@ -9,16 +9,24 @@ function addEmailError() {
 }
 
 function addCountryError() {
-  countryError.textContent = "Please, enter a country";
+  countryError.textContent = "Please, enter a country.";
+}
+
+function addZipcodeError() {
+  if (zipcode.validity.valueMissing) {
+    zipcodeError.textContent = "Plase, enter a Zip code";
+  } else if (!validateZipcode(zipcode.value)) {
+    zipcodeError.textContent = "Expected format: ##### or #####-####";
+  }
 }
 
 function addPasswordError() {
   passwordError.textContent =
-    "Password must be between 8 and 30 characters long and contain one uppercase letter, one symbol, and a number";
+    "Password must be between 8 and 30 characters long and contain one uppercase letter, one symbol, and a number.";
 }
 
 function addConfirmPasswordError() {
-  confirmPasswordError.textContent = "Passwords do not match";
+  confirmPasswordError.textContent = "Passwords do not match.";
 }
 
 // returns true or false if password is valid or not
@@ -41,8 +49,12 @@ function validatePassword(password) {
 }
 
 function validateConfirmPassword(password, confirmPassword) {
-  const areEqual = password === confirmPassword;
-  return areEqual;
+  return password === confirmPassword;
+}
+
+function validateZipcode(zipcode) {
+  const regex = /^\d{5}(-\d{4})?$/;
+  return regex.test(zipcode);
 }
 
 // program starts here
@@ -82,16 +94,25 @@ form.addEventListener("submit", (event) => {
   if (country.value === "") addCountryError();
   countryError.classList.toggle("show", country.value === "");
 
+  // show zipcode error
+  if (!validateZipcode(zipcode.value)) addZipcodeError();
+  zipcodeError.classList.toggle("show", !validateZipcode(zipcode.value));
+
   // show password error
   if (!validatePassword(password.value)) addPasswordError();
   passwordError.classList.toggle("show", !validatePassword(password.value));
 
   // show password confirmation error
-  if (!validateConfirmPassword(password.value, confirmPassword.value)) {
+  if (
+    validatePassword(password.value) &&
+    !validateConfirmPassword(password.value, confirmPassword.value)
+  ) {
     addConfirmPasswordError();
   }
   confirmPasswordError.classList.toggle(
     "show",
     !validateConfirmPassword(password.value, confirmPassword.value)
   );
+
+  console.log(validateZipcode(zipcode.value));
 });
