@@ -127,3 +127,35 @@ form.addEventListener("submit", (event) => {
   if (!passwordValidity) showPasswordError();
   if (confirmPasswordValidity) showConfirmPasswordError();
 });
+
+email.addEventListener("blur", () => {
+  removeAllErrors();
+  let emailValidity = email.validity.valid;
+  if (!emailValidity) showEmailError();
+});
+
+country.addEventListener("blur", () => {
+  removeAllErrors();
+  let countryValidity = !(country.value === "");
+  if (!countryValidity) showCountryError();
+});
+
+password.addEventListener("blur", () => {
+  removeAllErrors();
+  let passwordValidity = validatePassword(password.value);
+  if (!passwordValidity) showPasswordError();
+});
+
+zipcode.addEventListener("blur", () => {
+  removeAllErrors();
+  let zipcodeValidity = validateZipcode(zipcode.value);
+  if (!zipcodeValidity) showZipcodeError();
+});
+
+confirmPassword.addEventListener("blur", () => {
+  removeAllErrors();
+  let confirmPasswordValidity =
+    validatePassword(password.value) &&
+    !validateConfirmPassword(password.value, confirmPassword.value);
+  if (confirmPasswordValidity) showConfirmPasswordError();
+});
