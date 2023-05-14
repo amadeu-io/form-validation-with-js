@@ -32,9 +32,11 @@ function showZipcodeError() {
   zipcodeError.classList.add("show-error");
 }
 
-function addPasswordError() {
-  passwordError.textContent =
-    "Password must be between 8 and 30 characters long and contain one uppercase letter, one symbol, and a number.";
+function showPasswordError() {
+  passwordError.textContent = `Password must be between 8 and 30 characters long 
+  and contain one uppercase letter, one symbol, and a number.`;
+
+  passwordError.classList.add("show-error");
 }
 
 function addConfirmPasswordError() {
@@ -109,11 +111,7 @@ form.addEventListener("submit", (event) => {
   if (!validateZipcode(zipcode.value)) showZipcodeError();
 
   // show password error
-  if (!validatePassword(password.value)) addPasswordError();
-  passwordError.classList.toggle(
-    "show-error",
-    !validatePassword(password.value)
-  );
+  if (!validatePassword(password.value)) showPasswordError();
 
   // show password confirmation error
   if (
