@@ -17,6 +17,10 @@ function addPasswordError() {
     "Password must be between 8 and 30 characters long and contain one uppercase letter, one symbol, and a number";
 }
 
+function addConfirmPasswordError() {
+  confirmPasswordError.textContent = "Passwords do not match";
+}
+
 // returns true or false if password is valid or not
 
 function validatePassword(password) {
@@ -36,16 +40,20 @@ function validatePassword(password) {
   return isLengthValid && hasUppercase && hasSymbol && hasNumber;
 }
 
+function validateConfirmPassword(password, confirmPassword) {
+  const areEqual = password === confirmPassword;
+  return areEqual;
+}
+
 // program starts here
 
 const form = document.querySelector("form");
-const email = document.getElementById("email");
 
-const emailInput = document.getElementById("email");
-const countryInput = document.getElementById("country");
-const zipcodeInput = document.getElementById("zipcode");
-const passwordInput = document.getElementById("password");
-const confirmPasswordInput = document.getElementById("confirm-password");
+const email = document.getElementById("email");
+const country = document.getElementById("country");
+const password = document.getElementById("password");
+const zipcode = document.getElementById("zipcode");
+const confirmPassword = document.getElementById("confirm-password");
 
 const emailError = document.querySelector(".email-error");
 const countryError = document.querySelector(".country-error");
@@ -71,10 +79,19 @@ form.addEventListener("submit", (event) => {
   emailError.classList.toggle("show", !email.validity.valid);
 
   // show country error
-  if (countryInput.value === "") addCountryError();
-  countryError.classList.toggle("show", countryInput.value === "");
+  if (country.value === "") addCountryError();
+  countryError.classList.toggle("show", country.value === "");
 
   // show password error
   if (!validatePassword(password.value)) addPasswordError();
   passwordError.classList.toggle("show", !validatePassword(password.value));
+
+  // show password confirmation error
+  if (!validateConfirmPassword(password.value, confirmPassword.value)) {
+    addConfirmPasswordError();
+  }
+  confirmPasswordError.classList.toggle(
+    "show",
+    !validateConfirmPassword(password.value, confirmPassword.value)
+  );
 });
