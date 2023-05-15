@@ -17,7 +17,7 @@ body {
 }
 
 .body-container {
-  /* make the page have empty sides */
+  /* make the page have sides */
   width: 80%;
 }
 
@@ -131,6 +131,7 @@ form {
 }
 
 .show-error {
+  /* will dynamically show the error */
   display: block;
 }
 

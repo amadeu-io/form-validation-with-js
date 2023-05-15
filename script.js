@@ -130,7 +130,6 @@ form.addEventListener("submit", (event) => {
 });
 
 // show errors on blur
-
 email.addEventListener("blur", () => {
   removeAllErrors();
   let emailValidity = email.validity.valid;
