@@ -117,16 +117,23 @@ form.addEventListener("submit", (event) => {
   let zipcodeValidity = validateZipcode(zipcode.value);
   let passwordValidity = validatePassword(password.value);
   let confirmPasswordValidity =
-    validatePassword(password.value) &&
-    !validateConfirmPassword(password.value, confirmPassword.value);
+    !validatePassword(password.value) ||
+    validateConfirmPassword(password.value, confirmPassword.value);
+  // only show error when password is valid
+
+  console.log(validatePassword(password.value));
+  console.log(validateConfirmPassword(password.value, confirmPassword.value));
+  console.log(confirmPasswordValidity);
 
   // call adeqate error functions if invalid
   if (!emailValidity) showEmailError();
   if (!countryValidity) showCountryError();
   if (!zipcodeValidity) showZipcodeError();
   if (!passwordValidity) showPasswordError();
-  if (confirmPasswordValidity) showConfirmPasswordError();
+  if (!confirmPasswordValidity) showConfirmPasswordError();
 });
+
+// show errors on blur
 
 email.addEventListener("blur", () => {
   removeAllErrors();
