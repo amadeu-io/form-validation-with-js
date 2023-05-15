@@ -157,8 +157,9 @@ zipcode.addEventListener("blur", () => {
 
 confirmPassword.addEventListener("blur", () => {
   removeAllErrors();
-  let confirmPasswordValidity =
+  let whenToShowConfPassErr =
     validatePassword(password.value) &&
     !validateConfirmPassword(password.value, confirmPassword.value);
-  if (confirmPasswordValidity) showConfirmPasswordError();
+
+  if (whenToShowConfPassErr) showConfirmPasswordError();
 });
