@@ -4,7 +4,7 @@
   <img src="screenshot/screenshot.png" width="650px" alt="screenshot">
 </p>
 <h2 align="center">
-  <a href="https://nightrunner4.github.io/form-validation-with-js">👉 Demo</a>
+  <a href="https://amadeu-io.github.io/form-validation-with-js">👉 Demo</a>
 </h2>
 
 ### About 📖
